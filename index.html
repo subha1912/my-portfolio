@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subhalakshmi | Portfolio</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+  <script defer src="assets/js/script.js"></script>
+</head>
+
+<body>
+  
+  <div id="tsparticles"></div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-right">
+      <a href="#home">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#Skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle"><i id="themeIcon" class="fas fa-moon"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+     <div class="hero-content">
+      <div class="hero-left" data-aos="fade-right">
+        <p class="greeting">Hi, There :) ! I'm</p>
+        <h1>Subhalakshmi</h1>
+        <p class="tagline">Data Analyst | AI & ML Engineer | SQL Developer</p>
+
+       <div class="hero-buttons">
+          <a href="assets/resume/Subhalakshmi_Resume.pdf" download class="btn-expand">
+            <i class="fas fa-cloud-download-alt"></i>
+            <span>Download Resume</span>
+          </a>
+          <a href="#contact" class="btn-connect">Let's Connect <i class="fas fa-arrow-down"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-right" data-aos="fade-left">
+        <div class="profile-circle">
+          <img src="assets/images/image1.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    tsParticles.load("tsparticles", {
+      background: {
+        color: {
+          value: "transparent" // ✅ So body background shows through
+        }
+      },
+      particles: {
+        number: { value: 80 },
+        color: { value: "#ff0000" },
+        links: { enable: true, color: "#ff0000", distance: 150, opacity: 0.6 },
+        move: { enable: true, speed: 1 },
+        size: { value: 2 },
+        opacity: { value: 0.5 },
+        interactivity: {
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+          },
+          modes: {
+            repulse: { distance: 100 },
+            push: { quantity: 4 }
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- About Section -->
+<section id="about" class="about-section">
+  <h2 class="section-title">About Me</h2>
+  <div class="soft-skills">
+    <div class="skill-card">
+      <i class="fas fa-fire icon"></i>
+      <h3>Passionate</h3>
+      <p>Driven by enthusiasm, I invest myself fully into every task I take on.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-compass icon"></i>
+      <h3>Curious Explorer</h3>
+      <p>I love diving into new tools, trends, and emerging tech across domains.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-user-graduate icon"></i>
+      <h3>Self-paced Learner</h3>
+      <p>Committed to lifelong learning, I constantly upskill through self-led exploration.</p>
+    </div>
+  </div>
+  <div class="about-description">
+    <p>
+      I’m a B.Tech graduate in Artificial Intelligence and Data Science, equipped with a strong foundation in AI, ML, and Data Science built through academic training.
+    </p>
+    <p>
+      Outside the curriculum, I developed a keen interest in data analysis and website design. I explored Figma, UI/UX design principles, and completed certifications in HTML & CSS. This helped me gain hands-on experience creating user-friendly pages. I’ve also applied NLP, Hugging Face, and LLM models in real-world projects.
+    </p>
+    <p>
+      My curiosity led me to master SQL through self-learning and Power BI for impactful dashboards. Recently, I began diving into cloud platforms to broaden my knowledge further. I'm always eager to explore, learn, and create using the latest tools and frameworks.
+    </p>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education-section">
+  <h2 class="section-title">Education</h2>
+
+  <div class="education-box">
+    
+      <h3>B.Tech in AI & DS</h3>
+      <p>Saranathan College of Engineering, Trichy, Tamil Nadu</p>
+      <span>2021 - 2025</span>
+      <p>CGPA: 8.6</p>
+    </div>
+
+    <div class="education-box">
+      <h3>HSC</h3>
+      <p>SFS Matriculation Hr. Sec. School, Pudukkottai</p>
+      <span>2020 - 2021</span>
+      <p>Percentage: 91%</p>
+    </div>
+
+    <div class="education-box">
+      <h3>SSLC</h3>
+      <p>SFS Matriculation Hr. Sec. School, Pudukkottai</p>
+      <span>2018 - 2019</span>
+      <p>Percentage: 89%</p>
+    </div>
+  </div>
+</section>
+
+ 
+<section class="projects-section" id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-container">
+
+    <!-- Project Card Template -->
+    <div class="project-card">
+      <img src="assets/images/transit.png" alt="AI Transit System" class="project-image" />
+      <h3>AI-Driven Transit System</h3>
+      <p>Smart transport system using AI for real-time scheduling, route optimization, and eco-friendly solutions.</p>
+      <div class="tech-stack">
+        <button>Python</button>
+        <button>Flask</button>
+        <button>TensorFlow</button>
+        <button>IoT</button>
+      </div>
+      <a href="https://github.com/subha1912/AI-DRIVEN-TRANSIT-WITH-MULTILINGUAL-TICKETING-BLOCKCHAIN-SECURITY" class="github-icon" target="_blank">
+        <i class="fab fa-github"></i><span class="github-text">GitHub</span>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img src="assets/images/news.png" alt="News Summarization" class="project-image" />
+      <h3>News Summarization</h3>
+      <p>Web app for trending news extraction, NLP-based summarization, sentiment analysis, and TTS conversion.</p>
+      <div class="tech-stack">
+        <button>Python</button>
+        <button>Streamlit</button>
+        <button>NLTK</button>
+        <button>TextBlob</button>
+        <button>gTTS</button>
+      </div>
+      <a href="https://github.com/subha1912/News-Summarization-App" class="github-icon" target="_blank">
+        <i class="fab fa-github"></i><span class="github-text">GitHub</span>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img src="assets/images/traffic.png" alt="Web Traffic Analysis" class="project-image" />
+      <h3>Web Traffic Analysis</h3>
+      <p>Analyzed website traffic using ML to detect patterns, trends, anomalies and visualize metrics efficiently.</p>
+      <div class="tech-stack">
+        <button>Python</button>
+        <button>Pandas</button>
+        <button>Power BI</button>
+        <button>Scikit-Learn</button>
+      </div>
+      <a href="https://github.com/subha1912/website-traffic-analysis" class="github-icon" target="_blank">
+        <i class="fab fa-github"></i><span class="github-text">GitHub</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+ <!-- Skills Section -->
+  <section class="skills-section" id="Skills">
+    <h2 class="section-title text-red-500 dark:text-white">Skills</h2>
+    
+
+    
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="tools">Tools</button>
+      <button class="filter-btn" data-filter="languages">Languages</button>
+      <button class="filter-btn" data-filter="frameworks">Frameworks</button>
+      <button class="filter-btn" data-filter="softskills">Soft Skills</button>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Tools -->
+      <div class="skill-box tools" data-tooltip="Power BI">
+        <img src="assets/images/powerBI.png" alt="Power BI">
+      </div>
+      <div class="skill-box tools" data-tooltip="VS Code">
+        <img src="assets/images/vscode.png" alt="VS Code">
+      </div>
+      <div class="skill-box tools" data-tooltip="Jupyter">
+        <img src="assets/images/jupyter.png" alt="Jupyter">
+      </div>
+      <div class="skill-box tools" data-tooltip="Git">
+        <img src="assets/images/git.png" alt="Git">
+      </div>
+      <div class="skill-box tools" data-tooltip="ChatGPT">
+        <img src="assets/images/ChatGPT.png" alt="ChatGPT">
+      </div>
+      <div class="skill-box tools" data-tooltip="Streamlit">
+        <img src="assets/images/streamlit.png" alt="Streamlit">
+      </div>
+      <div class="skill-box tools" data-tooltip="Hugging Face">
+        <img src="assets/images/huggingface.png" alt="Hugging Face">
+      </div>
+
+      <!-- Languages -->
+      <div class="skill-box languages" data-tooltip="Python">
+        <img src="assets/images/python.png" alt="Python">
+      </div>
+      <div class="skill-box languages" data-tooltip="MySQL">
+        <img src="assets/images/MySQL.png" alt="MySQL">
+      </div>
+      <div class="skill-box languages" data-tooltip="HTML">
+        <img src="assets/images/html.png" alt="HTML">
+      </div>
+      <div class="skill-box languages" data-tooltip="CSS">
+        <img src="assets/images/css.png" alt="CSS">
+      </div>
+      <!--frameworks-->
+      <div class="skill-box frameworks" data-tooltip="Pandas">
+        <img src="assets/images/pandas.png" alt="Pandas">
+      </div>
+      <div class="skill-box frameworks" data-tooltip="NumPy">
+        <img src="assets/images/numpy.png" alt="NumPy">
+      </div>
+      <div class="skill-box frameworks" data-tooltip="Scikit-Learn">
+        <img src="assets/images/scikitlearn.png" alt="Scikit-Learn">
+      </div>
+      <div class="skill-box frameworks" data-tooltip="TensorFlow">
+        <img src="assets/images/tensorflow.png" alt="TensorFlow">
+      </div>
+
+      <!-- Soft Skills -->
+      <div class="skill-box softskills" data-tooltip="Communication">
+        <img src="assets/images/communication.png" alt="Communication">
+      </div>
+      <div class="skill-box softskills" data-tooltip="Teamwork">
+        <img src="assets/images/teamwork.png" alt="Teamwork">
+      </div>
+      <div class="skill-box softskills" data-tooltip="Time Management">
+        <img src="assets/images/timemanagement.png" alt="Time Management">
+      </div>
+      <div class="skill-box softskills" data-tooltip="Problem Solving">
+        <img src="assets/images/problem-solving.png" alt="Problem Solving">
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <h2 class="contact-title">Get In Touch</h2>
+
+  <!-- Social Icons -->
+  <div class="social-icons">
+    <a href="https://github.com/subha1912" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.hackerrank.com/profile/subhalakshmiala1" target="_blank" title="HackerRank">
+      <i class="fab fa-hackerrank"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/subha19" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+
+  <!-- Contact Form -->
+  <form id="contact-form">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="tel" id="phone" placeholder="Contact Number" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <textarea id="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="send-btn">
+      <i class="fas fa-paper-plane mr-2"></i> Send Message
+    </button>
+  </form>
+
+  <!-- Proverb -->
+  <p class="proverb"><em>Curiosity; Consistency; Confidence</em></p>
+
+  <div class="rating-section">
+  <h3>If you liked it, star it!</h3>
+  <div class="stars" id="starContainer">
+    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="2">&#9733;</span>
+    <span class="star" data-value="3">&#9733;</span>
+    <span class="star" data-value="4">&#9733;</span>
+    <span class="star" data-value="5">&#9733;</span>
+</div>
+ <!-- Copyright -->
+  <footer class="footer">
+    © Design by Subhalakshmi 2025
+  </footer>
+</section>
+
+<div class="custom-cursor" id="customCursor">
+  <div class="cursor-dot"></div>
+</div>
+
+
+
+
+</body>
+</html>
