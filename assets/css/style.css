@@ -801,3 +801,9 @@ body {
   opacity: 1;
   transform: translate(-50%, -180%);
 }
+#contact {
+  scroll-margin-top: 100px; /* pushes content down when navigated */
+  padding-top: 4rem; /* gives visual spacing */
+  position: relative;
+  z-index: 1;
+}
