@@ -224,23 +224,20 @@ document.getElementById('themeToggle').addEventListener('click', function() {
 });
 
 // Toggle mobile menu
-// Mobile menu toggle
-const menuBtn = document.getElementById('mobileMenuBtn');
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
-menuBtn.addEventListener('click', function() {
-  // Toggle menu open/close
-  this.classList.toggle('active');
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('active');
   mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-  
-  // Toggle body scroll
-  document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+  document.body.style.overflow = mobileMenu.style.display === 'flex' ? 'hidden' : '';
 });
 
 // Close menu when clicking links
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    menuBtn.classList.remove('active');
+    mobileMenuBtn.classList.remove('active');
     mobileMenu.style.display = 'none';
     document.body.style.overflow = '';
   });
