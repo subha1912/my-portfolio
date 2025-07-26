@@ -1075,57 +1075,71 @@ body {
     cursor: default;
   }
 }
+/* ===================================== */
+/* MOBILE NAVBAR FIX (MAX-WIDTH: 768px) */
+/* ===================================== */
 @media only screen and (max-width: 768px) {
-  /* 1. Remove hamburger menu completely */
+  /* 1. Remove hamburger completely */
   .hamburger {
     display: none !important;
   }
-  
-  /* 2. Create static two-row navbar */
+
+  /* 2. Main navbar container */
   .navbar {
     position: sticky;
     top: 0;
-    display: block;
-    padding: 10px 15px;
     background: var(--bg);
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 10px 15px;
   }
-  
-  /* 3. First row - Name + Theme toggle */
+
+  /* 3. Top row - Name + Theme toggle */
   .navbar-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
-  
+
   .mobile-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--text);
   }
-  
-  /* 4. Second row - Navigation links */
+
+  /* 4. Theme toggle fixes */
+  #themeToggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  /* 5. Bottom row - Navigation links */
   .nav-right {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
-  
+
   .nav-right a {
-    font-size: 0.9rem;
-    padding: 8px 10px;
-    margin: 0;
-    flex-grow: 1;
     text-align: center;
+    padding: 8px 5px;
+    font-size: 0.85rem;
     border-radius: 6px;
     background: rgba(255,255,255,0.05);
+    transition: all 0.3s;
   }
-  
-  /* 5. Adjust content spacing */
+
+  .nav-right a:hover {
+    background: rgba(255,0,0,0.1);
+  }
+
+  /* 6. Adjust content spacing */
   main {
-    padding-top: 100px !important; /* Make space for sticky nav */
+    padding-top: 120px !important;
   }
 }

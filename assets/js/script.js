@@ -168,15 +168,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Mobile Menu Toggle
 
-// Only keep theme toggle functionality
+// Theme Toggle Fix
 document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
   
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  }
+  
+  // Toggle handler
   themeToggle.addEventListener('click', function() {
     const isLight = document.body.classList.toggle('light-theme');
-    themeIcon.classList.toggle('fa-sun');
-    themeIcon.classList.toggle('fa-moon');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    
+    if (isLight) {
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeIcon.classList.replace('fa-sun', 'fa-moon');
+      localStorage.setItem('theme', 'dark');
+    }
   });
 });
