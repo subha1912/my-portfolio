@@ -239,8 +239,4 @@ document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
     document.body.classList.remove('menu-open');
   });
 });
-const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-mobileThemeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  // Add your theme toggle logic here
-});
+
