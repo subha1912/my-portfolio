@@ -254,4 +254,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('dark-theme');
+  document.body.classList.toggle('red-theme');
+  // Update icon (optional)
+  const icon = document.getElementById('themeIcon');
+  if (document.body.classList.contains('dark-theme')) {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }
+});
 

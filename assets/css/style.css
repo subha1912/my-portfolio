@@ -1176,3 +1176,7 @@ body {
     padding-top: 60px !important;
   }
 }
+.three-dots {
+  color: #FFFFFF; /* or any preferred color */
+  font-size: 24px; /* adjust size if needed */
+}
