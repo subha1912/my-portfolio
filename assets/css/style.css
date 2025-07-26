@@ -569,7 +569,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 170px;
+  height: 190px;
 }
 
 [data-theme="dark"] .skill-box {
