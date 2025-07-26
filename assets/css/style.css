@@ -556,7 +556,8 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 25px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 .skill-box {
@@ -601,11 +602,11 @@ section {
   white-space: nowrap;
 }
 #skills {
-  padding-bottom: 120px;
-  margin-bottom: 100px;
+  padding: 50px 20px 100px;
+  margin-bottom: 0;
   position:relative;
   overflow: visible;
-  z-index:2; /* gives space after skills before contact starts */
+  z-index:1; /* gives space after skills before contact starts */
 }
 
 
@@ -812,10 +813,9 @@ body {
 #contact{
   clear: both;
   margin-top: 80;
-  padding-top: 50px;
+  padding: 100px 20px 50px;
   background-color: #f7f7f7;
-  z-index: 1;
+  z-index: 2;
   position: relative;
-  overflow: hidden; /* or try auto */
-  min-height: auto; /* <-- ADD THIS */
+  
 }
