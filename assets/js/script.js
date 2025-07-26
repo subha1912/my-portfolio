@@ -224,19 +224,22 @@ document.getElementById('themeToggle').addEventListener('click', function() {
 });
 
 // Toggle mobile menu
-// Working JavaScript for menu toggle
-document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.getElementById('mobileMenuOverlay').classList.toggle('show');
-  document.body.classList.toggle('menu-open');
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('active');
+  mobileMenuOverlay.classList.toggle('show');
+  document.body.classList.toggle('no-scroll');
 });
 
 // Close menu when clicking links
-document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
+mobileMenuOverlay.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    document.getElementById('mobileMenuOverlay').classList.remove('show');
-    document.getElementById('mobileMenuBtn').classList.remove('active');
-    document.body.classList.remove('menu-open');
+    mobileMenuBtn.classList.remove('active');
+    mobileMenuOverlay.classList.remove('show');
+    document.body.classList.remove('no-scroll');
   });
 });
 
