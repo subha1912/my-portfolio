@@ -647,14 +647,6 @@ section {
   color: var(--accent);
 }
 
-#contact-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 0 auto 30px;
-  gap: 15px;
-}
-
 #contact-form input,
 #contact-form textarea {
   padding: 12px 15px;
@@ -694,11 +686,6 @@ section {
   margin-top: 10px;
 }
 
-.footer {
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
 /* Example custom button color switch */
 button {
   background-color: #dc2626; /* red-600 */
@@ -811,15 +798,6 @@ body {
 .floating-stars.animate {
   opacity: 1;
   transform: translate(-50%, -180%);
-}
-#contact{
-  clear: both;
-  margin-top: 80;
-  padding: 100px 20px 50px;
-  background-color: #f7f7f7;
-  z-index: 2;
-  position: relative;
-  
 }
 /* Updated skills section */
 #skills {
