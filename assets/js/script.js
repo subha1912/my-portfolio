@@ -168,28 +168,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Mobile Menu Toggle
 
-// Guaranteed Working Theme Toggle
+// Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  const navRight = document.querySelector('.nav-right');
+  
+  if (hamburger && navRight) {
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navRight.classList.toggle('show');
+      
+      // Prevent scrolling when menu is open
+      document.body.style.overflow = navRight.classList.contains('show') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-right a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navRight.classList.remove('show');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  
+  // Theme Toggle (existing code remains same)
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
   
-  // Initialize from localStorage
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  if (currentTheme === 'light') {
-    document.body.classList.add('light-theme');
-    themeIcon.classList.replace('fa-moon', 'fa-sun');
-  }
-  
-  // Toggle handler
   themeToggle.addEventListener('click', function() {
     const isLight = document.body.classList.toggle('light-theme');
-    
-    if (isLight) {
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-      localStorage.setItem('theme', 'light');
-    } else {
-      themeIcon.classList.replace('fa-sun', 'fa-moon');
-      localStorage.setItem('theme', 'dark');
-    }
+    themeIcon.classList.toggle('fa-sun');
+    themeIcon.classList.toggle('fa-moon');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 });
