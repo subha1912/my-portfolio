@@ -569,7 +569,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 190px;
+  height: 170px;
 }
 
 [data-theme="dark"] .skill-box {
@@ -602,7 +602,7 @@ section {
 }
 #skills {
   margin-bottom: 100px;
-  padding-bottom: 120px;
+  padding-bottom: 160px;
   position:relative;
   overflow: visible;
   z-index:0; /* gives space after skills before contact starts */
