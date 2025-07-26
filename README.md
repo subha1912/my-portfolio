@@ -91,18 +91,15 @@ Vercel
 
 Netlify
 
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 ## 📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
-
-©️ Copyright
+## ©️ Copyright
 © 2025 Subhalakshmi Alagappan
 All rights reserved. Built with passion for data, design, and development 💫
 
-🤝 Contribution
+## 🤝 Contribution
 Contributions are welcome! To contribute:
 
 Fork the repository
@@ -115,11 +112,5 @@ Push to the branch: git push origin feature-name
 
 Submit a pull request
 
-📬 Contact
-📧 Email: your-email@example.com
-
-🌐 Portfolio: your-website.com
-
-🐦 Twitter: @yourhandle
-
-🔗 LinkedIn: Your Name
+##  Contact
+📧 Email: subhalakshmialagappan19@gmail.com
