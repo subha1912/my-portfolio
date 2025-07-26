@@ -168,14 +168,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Mobile Menu Toggle
 
-// Theme Toggle Fix
+// Guaranteed Working Theme Toggle
 document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
   
-  // Initialize theme
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  if (savedTheme === 'light') {
+  // Initialize from localStorage
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  if (currentTheme === 'light') {
     document.body.classList.add('light-theme');
     themeIcon.classList.replace('fa-moon', 'fa-sun');
   }
