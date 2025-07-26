@@ -601,7 +601,8 @@ section {
   white-space: nowrap;
 }
 #skills {
-  padding-bottom: 120px;
+  padding-bottom: 50px;
+  margin-bottom: 150px;
   position:relative;
   overflow: visible;
   z-index:2; /* gives space after skills before contact starts */
@@ -810,8 +811,8 @@ body {
 }
 #contact {
   clear: both; /* force a new flow */
-  margin-top: 100px; /* space from skills */
-  padding-top: 60px;
+  margin-top: -50px; /* space from skills */
+  padding-top: 100px;
   background-color: #f7f7f7;
   z-index: 1;
   position: relative;
