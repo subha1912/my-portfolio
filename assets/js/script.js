@@ -1,7 +1,7 @@
 function loadParticles(isLightTheme) {
   tsParticles.load("particles-bg", {
     background: {
-      color: { value: "transparent" }
+      color: { value: "transparent" },
     },
     particles: {
       number: { value: 90 },
@@ -10,119 +10,131 @@ function loadParticles(isLightTheme) {
         enable: true,
         color: "#ff0000",
         distance: 120,
-        opacity: isLightTheme ? 0.9 : 0.5
+        opacity: isLightTheme ? 0.9 : 0.5,
       },
       move: { enable: true, speed: 1.2 },
       size: { value: 2.5 },
       opacity: {
         value: isLightTheme ? 0.85 : 0.6,
-        anim: { enable: false }
-      }
+        anim: { enable: false },
+      },
     },
     interactivity: {
       events: {
         onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: true, mode: "push" }
+        onclick: { enable: true, mode: "push" },
       },
       modes: {
         repulse: { distance: 100 },
-        push: { quantity: 4 }
-      }
+        push: { quantity: 4 },
+      },
     },
-    detectRetina: true
+    detectRetina: true,
   });
 }
 
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
 
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-  const isLight = savedTheme === 'light';
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  const isLight = savedTheme === "light";
+
   if (isLight) {
-    document.body.classList.add('light-theme');
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
+    document.body.classList.add("light-theme");
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
   }
+
   loadParticles(isLight);
+  updateContactTitleColor(isLight ? "light" : "dark");
+  initCursor();
+  initRatingStars();
 });
 
-themeToggle.addEventListener('click', () => {
-  const isLight = document.body.classList.toggle('light-theme');
-  themeIcon.classList.toggle('fa-sun');
-  themeIcon.classList.toggle('fa-moon');
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  
+themeToggle.addEventListener("click", () => {
+  const isLight = document.body.classList.toggle("light-theme");
+
+  themeIcon.classList.toggle("fa-sun");
+  themeIcon.classList.toggle("fa-moon");
+
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+
   const existingParticles = tsParticles.domItem(0);
   if (existingParticles) existingParticles.destroy();
-  
+
   loadParticles(isLight);
+  updateContactTitleColor(isLight ? "light" : "dark");
 });
 
-// Assuming you already have light/dark mode logic, just update the root variables
-const filterButtons = document.querySelectorAll('.filter-btn');
-const skillBoxes = document.querySelectorAll('.skill-box');
+// ⭐ Skill Filters
+const filterButtons = document.querySelectorAll(".filter-btn");
+const skillBoxes = document.querySelectorAll(".skill-box");
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
     const category = button.dataset.filter;
 
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
 
-    skillBoxes.forEach(box => {
-      if (category === 'all' || box.classList.contains(category)) {
-        box.style.display = 'flex';
+    skillBoxes.forEach((box) => {
+      if (category === "all" || box.classList.contains(category)) {
+        box.style.display = "flex";
       } else {
-        box.style.display = 'none';
+        box.style.display = "none";
       }
     });
   });
 });
 
-// Contact form popup
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  alert("Your message has been sent successfully!");
-  this.reset();
-});
+// 📩 Contact Form
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Your message has been sent successfully!");
+    this.reset();
+  });
+}
 
-// Smooth scroll for "Let's Connect" button (on home section)
-document.querySelectorAll('a[href="#contact"]').forEach(anchor => {
+// 🔗 Smooth Scroll to Contact
+document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
   });
 });
 
-// Theme-based title color toggle for contact title
+// 🎨 Contact Title Color Theme
 function updateContactTitleColor(theme) {
   const title = document.querySelector(".contact-title");
-  if (theme === "light") {
-    title.style.color = "red";
-  } else {
-    title.style.color = "white";
+  if (title) {
+    title.style.color = theme === "light" ? "red" : "white";
   }
 }
 
-// OPTIONAL: Call this function when toggling theme
-// updateContactTitleColor("light") or updateContactTitleColor("dark")
-document.addEventListener("DOMContentLoaded", () => {
+// 🖱️ Custom Cursor
+function initCursor() {
   const cursor = document.getElementById("customCursor");
+  if (!cursor) return;
 
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = `${e.clientX - 20}px`;
     cursor.style.top = `${e.clientY - 20}px`;
   });
-});
-document.addEventListener("DOMContentLoaded", () => {
+}
+
+// ⭐ Rating Stars
+function initRatingStars() {
   const stars = document.querySelectorAll(".star");
+  if (!stars.length) return;
+
   let totalRatings = parseInt(localStorage.getItem("totalRatings")) || 0;
   let totalScore = parseInt(localStorage.getItem("totalScore")) || 0;
 
-  // We won’t show this info on page, so no need to updateDisplay
   function updateDisplay() {
-    // If needed for debug: console.log(`Avg: ${(totalScore / totalRatings).toFixed(1)} from ${totalRatings}`);
+    // Debugging only: console.log(`Avg: ${(totalScore / totalRatings).toFixed(1)} from ${totalRatings}`);
   }
 
   updateDisplay();
@@ -131,11 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
     star.addEventListener("click", () => {
       const rating = index + 1;
 
-      // Save rating
       totalRatings += 1;
       totalScore += rating;
       localStorage.setItem("totalRatings", totalRatings);
       localStorage.setItem("totalScore", totalScore);
+
       updateDisplay();
 
       // Highlight selected stars
@@ -165,51 +177,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1200);
     });
   });
-});
-// Mobile Menu Toggle
-
-// Theme Toggle Fix
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize theme from localStorage
-  const savedTheme = localStorage.getItem('theme');
-  const isLight = savedTheme === 'light';
-  
-  if (isLight) {
-    document.body.classList.add('light-theme');
-    document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
-  }
-
-  // Theme toggle handler
-  document.getElementById('themeToggle').addEventListener('click', function() {
-    const isLight = document.body.classList.toggle('light-theme');
-    const themeIcon = document.getElementById('themeIcon');
-    
-    if (isLight) {
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-      themeIcon.classList.replace('fa-sun', 'fa-moon');
-    }
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-
-  // Mobile Menu Toggle
-  const hamburger = document.getElementById('hamburger');
-  const navRight = document.querySelector('.nav-right');
-  
-  if (hamburger && navRight) {
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navRight.classList.toggle('show');
-      document.body.style.overflow = navRight.classList.contains('show') ? 'hidden' : '';
-    });
-    
-    // Close menu when clicking links
-    document.querySelectorAll('.nav-right a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navRight.classList.remove('show');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-});
+}
