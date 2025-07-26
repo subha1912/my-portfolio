@@ -1172,3 +1172,43 @@ body {
     padding-top: 60px !important;
   }
 }
+/* Style for the three-dot menu button */
+.mobile-menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
+
+/* Style for each dot */
+.mobile-menu-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #FFFFFF; /* White (works on black & red) */
+  /* Alternative: background: #FFFF00; (Yellow) */
+}
+
+/* Ensure dots are visible in dark/red themes */
+.dark-theme .mobile-menu-dot {
+  background: #FFFFFF; /* White stays visible on black */
+}
+
+.red-theme .mobile-menu-dot {
+  background: #FFFF00; /* Yellow if red clashes with white */
+}
+.mobile-menu-btn:hover .mobile-menu-dot {
+  background: #00FFFF; /* Cyan on hover for extra visibility */
+}
+.mobile-menu-dot {
+  transition: transform 0.3s, background 0.3s;
+}
+.mobile-menu-btn:hover .mobile-menu-dot:nth-child(1) {
+  transform: translateY(-2px);
+}
+.mobile-menu-btn:hover .mobile-menu-dot:nth-child(3) {
+  transform: translateY(2px);
+}
