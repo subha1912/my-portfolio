@@ -167,19 +167,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // Mobile Menu Toggle
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navRight = document.querySelector('.nav-right');
-
-hamburger.addEventListener('click', () => {
-  navRight.classList.toggle('show');
-  hamburger.classList.toggle('active');
-});
-
-// Close menu when clicking on nav items
-document.querySelectorAll('.nav-right a').forEach(item => {
-  item.addEventListener('click', () => {
-    navRight.classList.remove('show');
-    hamburger.classList.remove('active');
-  });
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  const navRight = document.querySelector('.nav-right');
+  
+  // Only run if elements exist
+  if (hamburger && navRight) {
+    // Show hamburger on mobile
+    function checkMobileMenu() {
+      if (window.innerWidth <= 768) {
+        hamburger.style.display = 'block';
+        navRight.style.display = 'none';
+      } else {
+        hamburger.style.display = 'none';
+        navRight.style.display = 'flex';
+      }
+    }
+    
+    // Initial check
+    checkMobileMenu();
+    
+    // Toggle menu on click
+    hamburger.addEventListener('click', function() {
+      if (navRight.style.display === 'none' || navRight.style.display === '') {
+        navRight.style.display = 'flex';
+      } else {
+        navRight.style.display = 'none';
+      }
+    });
+    
+    // Re-check on window resize
+    window.addEventListener('resize', checkMobileMenu);
+  }
 });
