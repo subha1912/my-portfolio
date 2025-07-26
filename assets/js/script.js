@@ -224,19 +224,10 @@ document.getElementById('themeToggle').addEventListener('click', function() {
 });
 
 // Toggle mobile menu
+// Toggle mobile menu
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-
-mobileMenuBtn.addEventListener('click', () => {
-  mobileMenuOverlay.classList.toggle('show');
-  document.body.classList.toggle('menu-open');
-});
-
-// Close menu when clicking a link
-document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenuOverlay.classList.remove('show');
-    document.body.classList.remove('menu-open');
-  });
+mobileMenuBtn.addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileMenuOverlay').classList.toggle('show');
 });
 
