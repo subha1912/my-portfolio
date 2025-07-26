@@ -1,3 +1,4 @@
+// Particle Background Configuration
 function loadParticles(isLightTheme) {
   tsParticles.load("particles-bg", {
     background: {
@@ -33,80 +34,34 @@ function loadParticles(isLightTheme) {
   });
 }
 
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
-
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  const isLight = savedTheme === "light";
-
-  if (isLight) {
-    document.body.classList.add("light-theme");
-    themeIcon.classList.remove("fa-moon");
-    themeIcon.classList.add("fa-sun");
-  }
-
-  loadParticles(isLight);
-  updateContactTitleColor(isLight ? "light" : "dark");
-  initCursor();
-  initRatingStars();
-});
-
-themeToggle.addEventListener("click", () => {
+// Theme Management
+function toggleTheme() {
   const isLight = document.body.classList.toggle("light-theme");
-
-  themeIcon.classList.toggle("fa-sun");
-  themeIcon.classList.toggle("fa-moon");
+  
+  // Update all theme icons
+  const themeIcons = [
+    document.getElementById("themeIcon"),
+    document.getElementById("mobileThemeIcon")
+  ];
+  
+  themeIcons.forEach(icon => {
+    if (icon) {
+      icon.classList.toggle("fa-sun", isLight);
+      icon.classList.toggle("fa-moon", !isLight);
+    }
+  });
 
   localStorage.setItem("theme", isLight ? "light" : "dark");
-
+  
+  // Update particles
   const existingParticles = tsParticles.domItem(0);
   if (existingParticles) existingParticles.destroy();
-
   loadParticles(isLight);
+  
   updateContactTitleColor(isLight ? "light" : "dark");
-});
-
-// ⭐ Skill Filters
-const filterButtons = document.querySelectorAll(".filter-btn");
-const skillBoxes = document.querySelectorAll(".skill-box");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const category = button.dataset.filter;
-
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    skillBoxes.forEach((box) => {
-      if (category === "all" || box.classList.contains(category)) {
-        box.style.display = "flex";
-      } else {
-        box.style.display = "none";
-      }
-    });
-  });
-});
-
-// 📩 Contact Form
-const contactForm = document.getElementById("contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Your message has been sent successfully!");
-    this.reset();
-  });
 }
 
-// 🔗 Smooth Scroll to Contact
-document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-// 🎨 Contact Title Color Theme
+// Contact Title Color
 function updateContactTitleColor(theme) {
   const title = document.querySelector(".contact-title");
   if (title) {
@@ -114,7 +69,75 @@ function updateContactTitleColor(theme) {
   }
 }
 
-// 🖱️ Custom Cursor
+// Mobile Menu
+function initMobileMenu() {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  
+  if (mobileMenuBtn && mobileMenuOverlay) {
+    mobileMenuBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenuOverlay.classList.toggle('show');
+      document.body.classList.toggle('menu-open');
+    });
+    
+    mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuOverlay.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+}
+
+// Skill Filters
+function initSkillFilters() {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const skillBoxes = document.querySelectorAll(".skill-box");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.dataset.filter;
+
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      skillBoxes.forEach((box) => {
+        box.style.display = (category === "all" || box.classList.contains(category)) 
+          ? "flex" 
+          : "none";
+      });
+    });
+  });
+}
+
+// Contact Form
+function initContactForm() {
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Your message has been sent successfully!");
+      this.reset();
+    });
+  }
+}
+
+// Smooth Scrolling
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+// Custom Cursor
 function initCursor() {
   const cursor = document.getElementById("customCursor");
   if (!cursor) return;
@@ -125,30 +148,14 @@ function initCursor() {
   });
 }
 
-// ⭐ Rating Stars
+// Rating Stars
 function initRatingStars() {
   const stars = document.querySelectorAll(".star");
   if (!stars.length) return;
 
-  let totalRatings = parseInt(localStorage.getItem("totalRatings")) || 0;
-  let totalScore = parseInt(localStorage.getItem("totalScore")) || 0;
-
-  function updateDisplay() {
-    // Debugging only: console.log(`Avg: ${(totalScore / totalRatings).toFixed(1)} from ${totalRatings}`);
-  }
-
-  updateDisplay();
-
   stars.forEach((star, index) => {
     star.addEventListener("click", () => {
       const rating = index + 1;
-
-      totalRatings += 1;
-      totalScore += rating;
-      localStorage.setItem("totalRatings", totalRatings);
-      localStorage.setItem("totalScore", totalScore);
-
-      updateDisplay();
 
       // Highlight selected stars
       stars.forEach((s, i) => {
@@ -178,67 +185,41 @@ function initRatingStars() {
     });
   });
 }
-document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-  
-  if (mobileMenuBtn && mobileMenuOverlay) {
-    mobileMenuBtn.addEventListener('click', function() {
-      this.classList.toggle('active');
-      mobileMenuOverlay.classList.toggle('show');
-      document.body.classList.toggle('menu-open');
-    });
-    
-    mobileMenuOverlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        mobileMenuOverlay.classList.remove('show');
-        document.body.classList.remove('menu-open');
-      });
-    });
-  }
-});
 
-// Mobile Theme Toggle Integration
+// Initialize Everything
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+  // Set initial theme
+  const savedTheme = localStorage.getItem("theme");
+  const isLight = savedTheme === "light";
   
-  if (mobileThemeToggle && mobileThemeIcon) {
-    // Initialize mobile icon to match current theme
-    const isLight = document.body.classList.contains('light-theme');
-    mobileThemeIcon.classList.toggle('fa-sun', isLight);
-    mobileThemeIcon.classList.toggle('fa-moon', !isLight);
-    
-    // Mobile theme toggle handler
-    mobileThemeToggle.addEventListener('click', function() {
-      // Trigger the desktop theme toggle
-      themeToggle.click();
-      
-      // Update mobile icon immediately
-      mobileThemeIcon.classList.toggle('fa-sun');
-      mobileThemeIcon.classList.toggle('fa-moon');
-    });
+  if (isLight) {
+    document.body.classList.add("light-theme");
   }
+
+  // Initialize theme icons
+  const themeIcons = [
+    document.getElementById("themeIcon"),
+    document.getElementById("mobileThemeIcon")
+  ];
   
-  // Update the existing theme toggle to also handle mobile icon
-  const originalThemeToggle = themeToggle.click;
-  themeToggle.addEventListener('click', function() {
-    const isLight = document.body.classList.toggle('light-theme');
-    
-    // Update both icons
-    [themeIcon, mobileThemeIcon].forEach(icon => {
-      if (icon) {
-        icon.classList.toggle('fa-sun', isLight);
-        icon.classList.toggle('fa-moon', !isLight);
-      }
-    });
-    
-    // Rest of original theme handling
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    const existingParticles = tsParticles.domItem(0);
-    if (existingParticles) existingParticles.destroy();
-    loadParticles(isLight);
-    updateContactTitleColor(isLight ? 'light' : 'dark');
+  themeIcons.forEach(icon => {
+    if (icon) {
+      icon.classList.toggle('fa-sun', isLight);
+      icon.classList.toggle('fa-moon', !isLight);
+    }
   });
+
+  // Set up event listeners
+  document.getElementById("themeToggle")?.addEventListener('click', toggleTheme);
+  document.getElementById("mobileThemeToggle")?.addEventListener('click', toggleTheme);
+
+  // Initialize components
+  loadParticles(isLight);
+  updateContactTitleColor(isLight ? 'light' : 'dark');
+  initMobileMenu();
+  initSkillFilters();
+  initContactForm();
+  initSmoothScrolling();
+  initCursor();
+  initRatingStars();
 });

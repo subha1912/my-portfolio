@@ -1211,3 +1211,20 @@ body {
 .light-theme #mobileThemeToggle {
   color: black;
 }
+@media (max-width: 768px) {
+  #mobileThemeToggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+  
+  .light-theme #mobileThemeToggle {
+    color: black;
+  }
+}
