@@ -372,6 +372,10 @@ body.light-theme .skill-card .icon {
   justify-content: center;
   gap: 2rem;
 }
+.projects-section {
+  padding-bottom: 30px !important;
+  margin-bottom: 0 !important;
+}
 
 .project-card {
   background-color: rgba(255, 255, 255, 0.04);
@@ -525,6 +529,13 @@ section {
   margin-bottom: 30px;
   transition: color 0.3s ease;
 }
+.skills-section .section-title {
+  position: relative;
+  z-index: 3;
+  margin-top: 0;
+  padding-top: 0;
+  transform: translateY(40px); /* Pushes heading down into view */
+}
 
 .filter-buttons {
   margin-bottom: 30px;
@@ -602,10 +613,8 @@ section {
   white-space: nowrap;
 }
 #skills {
-  padding: 50px 20px 100px;
-  padding-top:80px;
-  padding-bottom: 50px;
-  margin-bottom: 0;
+  padding: 120px 20px 60px;
+  margin-top: -40px;
   position:relative;
   overflow: visible;
   z-index:1; /* gives space after skills before contact starts */
