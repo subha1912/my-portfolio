@@ -1190,3 +1190,24 @@ body {
     padding-top: 60px !important;
   }
 }
+
+/* Mobile theme toggle button */
+#mobileThemeToggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Dark theme adjustment */
+.dark-theme #mobileThemeToggle,
+.red-theme #mobileThemeToggle {
+  color: white;
+}
+
+.light-theme #mobileThemeToggle {
+  color: black;
+}

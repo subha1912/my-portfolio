@@ -199,3 +199,46 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// Mobile Theme Toggle Integration
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+  
+  if (mobileThemeToggle && mobileThemeIcon) {
+    // Initialize mobile icon to match current theme
+    const isLight = document.body.classList.contains('light-theme');
+    mobileThemeIcon.classList.toggle('fa-sun', isLight);
+    mobileThemeIcon.classList.toggle('fa-moon', !isLight);
+    
+    // Mobile theme toggle handler
+    mobileThemeToggle.addEventListener('click', function() {
+      // Trigger the desktop theme toggle
+      themeToggle.click();
+      
+      // Update mobile icon immediately
+      mobileThemeIcon.classList.toggle('fa-sun');
+      mobileThemeIcon.classList.toggle('fa-moon');
+    });
+  }
+  
+  // Update the existing theme toggle to also handle mobile icon
+  const originalThemeToggle = themeToggle.click;
+  themeToggle.addEventListener('click', function() {
+    const isLight = document.body.classList.toggle('light-theme');
+    
+    // Update both icons
+    [themeIcon, mobileThemeIcon].forEach(icon => {
+      if (icon) {
+        icon.classList.toggle('fa-sun', isLight);
+        icon.classList.toggle('fa-moon', !isLight);
+      }
+    });
+    
+    // Rest of original theme handling
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    const existingParticles = tsParticles.domItem(0);
+    if (existingParticles) existingParticles.destroy();
+    loadParticles(isLight);
+    updateContactTitleColor(isLight ? 'light' : 'dark');
+  });
+});
