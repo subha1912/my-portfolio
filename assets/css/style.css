@@ -1076,10 +1076,30 @@ body {
   }
 }
 /* ===================================== */
-/* MOBILE NAVBAR (DILIP'S STYLE) */
+/* MOBILE NAVBAR FIXES */
 /* ===================================== */
+
+/* Hide mobile menu elements on desktop */
+@media only screen and (min-width: 769px) {
+  .mobile-menu-btn,
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+  
+  /* Ensure desktop nav is visible */
+  .nav-right {
+    display: flex !important;
+  }
+}
+
+/* Mobile styles */
 @media only screen and (max-width: 768px) {
-  /* 1. Navbar Container */
+  /* Hide desktop nav on mobile */
+  .nav-right {
+    display: none !important;
+  }
+
+  /* Navbar container */
   .navbar {
     position: fixed;
     top: 0;
@@ -1093,12 +1113,7 @@ body {
     align-items: center;
   }
 
-  /* 2. Hide regular nav links on mobile */
-  .nav-right {
-    display: none;
-  }
-
-  /* 3. Mobile menu dots (Dilip's style) */
+  /* Mobile menu button (3 dots) */
   .mobile-menu-btn {
     display: flex;
     flex-direction: column;
@@ -1119,14 +1134,14 @@ body {
     align-self: center;
   }
 
-  /* 4. Mobile menu overlay (Dilip's style) */
+  /* Mobile menu overlay */
   .mobile-menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     z-index: 999;
     display: none;
     flex-direction: column;
@@ -1143,7 +1158,7 @@ body {
     font-size: 1.5rem;
     margin: 15px 0;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 5px;
     transition: all 0.3s;
   }
@@ -1152,7 +1167,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
   }
 
-  /* 5. Adjust content spacing */
+  /* Adjust content spacing */
   body {
     padding-top: 60px !important;
   }

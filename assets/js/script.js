@@ -178,8 +178,8 @@ function initRatingStars() {
     });
   });
 }
-// Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
   
@@ -195,6 +195,16 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuOverlay.classList.remove('show');
         document.body.style.overflow = '';
       });
+    });
+  }
+  
+  // Sync theme toggle between desktop and mobile
+  const themeToggle = document.getElementById('themeToggle');
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  
+  if (themeToggle && mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', function() {
+      themeToggle.click(); // Trigger the desktop theme toggle
     });
   }
 });
