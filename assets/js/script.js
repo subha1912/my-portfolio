@@ -179,92 +179,23 @@ function initRatingStars() {
   });
 }
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
   
   if (mobileMenuBtn && mobileMenuOverlay) {
     mobileMenuBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
       mobileMenuOverlay.classList.toggle('show');
-      document.body.style.overflow = mobileMenuOverlay.classList.contains('show') ? 'hidden' : '';
+      document.body.classList.toggle('menu-open');
     });
     
-    // Close menu when clicking links
     mobileMenuOverlay.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
         mobileMenuOverlay.classList.remove('show');
-        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
       });
     });
-  }
-  
-  // Sync theme toggle between desktop and mobile
-  const themeToggle = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  
-  if (themeToggle && mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', function() {
-      themeToggle.click(); // Trigger the desktop theme toggle
-    });
-  }
-});
-
-document.getElementById('themeToggle').addEventListener('click', function() {
-  document.body.classList.toggle('dark-theme');
-  document.body.classList.toggle('red-theme');
-  // Update icon (optional)
-  const icon = document.getElementById('themeIcon');
-  if (document.body.classList.contains('dark-theme')) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
-});
-
-// Toggle mobile menu
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-  
-  if (mobileMenuBtn && mobileMenuOverlay) {
-    mobileMenuBtn.addEventListener('click', function() {
-      mobileMenuOverlay.classList.toggle('show');
-      document.body.style.overflow = mobileMenuOverlay.classList.contains('show') ? 'hidden' : '';
-    });
-    
-    // Close menu when clicking links
-    mobileMenuOverlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuOverlay.classList.remove('show');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-  
-  // Sync theme toggle between desktop and mobile
-  const themeToggle = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  
-  if (themeToggle && mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', function() {
-      themeToggle.click(); // Trigger the desktop theme toggle
-    });
-  }
-});
-document.getElementById('themeToggle').addEventListener('click', function() {
-  document.body.classList.toggle('dark-theme');
-  document.body.classList.toggle('red-theme');
-  // Update icon (optional)
-  const icon = document.getElementById('themeIcon');
-  if (document.body.classList.contains('dark-theme')) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
   }
 });
 

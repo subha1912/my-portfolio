@@ -1083,14 +1083,14 @@ body {
 /* MOBILE NAVBAR FIXES */
 /* ===================================== */
 
-/* Hide mobile menu elements on desktop */
+/* ===== Mobile Menu Styles ===== */
+/* Hide mobile elements on desktop */
 @media only screen and (min-width: 769px) {
   .mobile-menu-btn,
   .mobile-menu-overlay {
     display: none !important;
   }
   
-  /* Ensure desktop nav is visible */
   .nav-right {
     display: flex !important;
   }
@@ -1098,44 +1098,57 @@ body {
 
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
-  /* Hide desktop nav on mobile */
+  /* Hide desktop nav */
   .nav-right {
     display: none !important;
   }
 
-  /* Navbar container */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    background: var(--bg);
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* Mobile menu button (3 dots) */
+  /* Mobile menu button */
   .mobile-menu-btn {
     display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: #000;
+    border: 2px solid #fff;
+    border-radius: 4px;
     flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    z-index: 1001;
     cursor: pointer;
-    background: transparent;
-    border: none;
-    padding: 5px;
+    padding: 8px;
   }
 
+  /* Mobile menu dots */
   .mobile-menu-dot {
+    display: block;
     width: 6px;
     height: 6px;
-    background: var(--text);
+    background: #fff;
     border-radius: 50%;
-    align-self: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Force white dots in all themes */
+  .dark-theme .mobile-menu-dot,
+  .red-theme .mobile-menu-dot,
+  .light-theme .mobile-menu-dot {
+    background: #fff !important;
+  }
+
+  /* Hover effects */
+  .mobile-menu-btn:hover .mobile-menu-dot {
+    background: #00ffff !important;
+  }
+  .mobile-menu-btn:hover .mobile-menu-dot:nth-child(1) {
+    transform: translateY(-2px);
+  }
+  .mobile-menu-btn:hover .mobile-menu-dot:nth-child(3) {
+    transform: translateY(2px);
   }
 
   /* Mobile menu overlay */
@@ -1143,10 +1156,10 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.95);
-    z-index: 999;
+    z-index: 1000;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -1160,23 +1173,20 @@ body {
   .mobile-menu-overlay a {
     color: white;
     font-size: 1.5rem;
-    margin: 15px 0;
+    margin: 10px 0;
+    padding: 12px 30px;
     text-decoration: none;
-    padding: 10px 30px;
     border-radius: 5px;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
 
   .mobile-menu-overlay a:hover {
     background: rgba(255, 255, 255, 0.1);
   }
 
-  /* Adjust content spacing */
-  body {
+  /* Adjust body padding when menu is open */
+  body.menu-open {
+    overflow: hidden;
     padding-top: 60px !important;
   }
-}
-.three-dots {
-  color: #FFFFFF; /* or any preferred color */
-  font-size: 24px; /* adjust size if needed */
 }
