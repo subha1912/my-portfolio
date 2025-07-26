@@ -167,108 +167,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // Mobile Menu Toggle
-// Mobile Menu Toggle
+
+// Only keep theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.getElementById('hamburger');
-  const navRight = document.querySelector('.nav-right');
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
   
-  if (hamburger && navRight) {
-    hamburger.style.display = 'none'; // Start hidden
-    
-    function checkMobile() {
-      if (window.innerWidth <= 768) {
-        hamburger.style.display = 'flex';
-        navRight.style.display = 'none';
-      } else {
-        hamburger.style.display = 'none';
-        navRight.style.display = 'flex';
-      }
-    }
-    
-    // Initial check
-    checkMobile();
-    
-    // Toggle menu
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navRight.classList.toggle('show');
-      
-      // Prevent scrolling when menu is open
-      if (navRight.classList.contains('show')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    });
-    
-    // Re-check on resize
-    window.addEventListener('resize', checkMobile);
-    
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-right a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navRight.classList.remove('show');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-});// Mobile Menu Toggle - Guaranteed Working Version
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.getElementById('hamburger');
-  const navRight = document.querySelector('.nav-right');
-  
-  // First make sure elements exist
-  if (!hamburger || !navRight) {
-    console.error("Menu elements not found!");
-    return;
-  }
-  
-  // Initialize menu state
-  hamburger.style.display = 'none';
-  navRight.style.display = 'none';
-  
-  function checkMobileMenu() {
-    if (window.innerWidth <= 768) {
-      hamburger.style.display = 'flex';
-      navRight.style.display = 'none'; // Start hidden
-    } else {
-      hamburger.style.display = 'none';
-      navRight.style.display = 'flex'; // Show normal nav
-    }
-  }
-  
-  // Initial check
-  checkMobileMenu();
-  
-  // Click handler with better error handling
-  hamburger.addEventListener('click', function() {
-    try {
-      this.classList.toggle('active');
-      const shouldShow = navRight.style.display === 'none';
-      navRight.style.display = shouldShow ? 'flex' : 'none';
-      
-      // Add debug borders temporarily
-      hamburger.classList.add('debug-nav');
-      navRight.classList.add('debug-nav');
-      setTimeout(() => {
-        hamburger.classList.remove('debug-nav');
-        navRight.classList.remove('debug-nav');
-      }, 2000);
-      
-    } catch (error) {
-      console.error("Menu toggle error:", error);
-    }
-  });
-  
-  // Handle window resize
-  window.addEventListener('resize', checkMobileMenu);
-  
-  // Close menu when clicking links
-  document.querySelectorAll('.nav-right a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navRight.style.display = 'none';
-    });
+  themeToggle.addEventListener('click', function() {
+    const isLight = document.body.classList.toggle('light-theme');
+    themeIcon.classList.toggle('fa-sun');
+    themeIcon.classList.toggle('fa-moon');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 });
