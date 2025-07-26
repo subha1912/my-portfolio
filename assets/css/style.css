@@ -600,6 +600,12 @@ section {
   transition: opacity 0.3s ease;
   white-space: nowrap;
 }
+#skills {
+  margin-bottom: 100px;
+  position:relative;
+  z-index:0; /* gives space after skills before contact starts */
+}
+
 
 .skill-box:hover::after {
   opacity: 1;
@@ -802,8 +808,10 @@ body {
   transform: translate(-50%, -180%);
 }
 #contact {
-  scroll-margin-top: 100px; /* pushes content down when navigated */
-  padding-top: 4rem; /* gives visual spacing */
-  position: relative;
+  clear: both; /* force a new flow */
+  margin-top: 100px; /* space from skills */
+  padding-top: 60px;
+  background-color: #f7f7f7;
   z-index: 1;
+  position: relative;
 }
