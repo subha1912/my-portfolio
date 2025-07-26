@@ -171,15 +171,16 @@ document.addEventListener("DOMContentLoaded", () => {
 const hamburger = document.getElementById('hamburger');
 const navRight = document.querySelector('.nav-right');
 
-hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
   hamburger.classList.toggle('active');
   navRight.classList.toggle('show');
-  
-  // Close menu when clicking a link
-  document.querySelectorAll('.nav-right a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navRight.classList.remove('show');
-    });
-  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.navbar')) {
+    hamburger.classList.remove('active');
+    navRight.classList.remove('show');
+  }
 });

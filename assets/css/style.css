@@ -847,35 +847,50 @@ body {
 }
 
 /* ===================================== */
-/* MOBILE RESPONSIVENESS (MAX-WIDTH: 768px) */
+/* MOBILE VISIBILITY FIXES (MAX-WIDTH: 768px) */
 /* ===================================== */
 @media only screen and (max-width: 768px) {
-  /* 1. Base Reset */
+  /* 1. Base Reset to Prevent Cutting Off Content */
   html, body {
     width: 100% !important;
     overflow-x: hidden !important;
   }
-
+  
   section {
     min-height: auto !important;
-    padding: 30px 15px !important;
+    padding: 40px 15px !important;
     margin: 0 !important;
   }
 
   /* 2. Fixed Mobile Navigation */
   .navbar {
     padding: 10px 15px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+    position: relative;
     background: var(--bg);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 30px;
+    height: 24px;
+    z-index: 1000;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--text); /* Visible in both themes */
+    margin: 5px 0;
+    transition: all 0.3s;
   }
 
   .nav-right {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
@@ -883,7 +898,9 @@ body {
     padding: 15px 0;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    z-index: 999;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   }
 
   .nav-right.show {
@@ -891,136 +908,71 @@ body {
   }
 
   .nav-right a {
-    width: 80%;
+    width: 90%;
     padding: 12px;
     text-align: center;
-    border-radius: 8px;
-    background: rgba(0,0,0,0.05);
   }
 
-  /* 3. Visible Hamburger Menu */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    position: absolute;
-    right: 15px;
-    top: 18px;
-    z-index: 1001;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background: var(--text);
-    transition: all 0.3s;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  /* 4. Hero Section Fixes */
+  /* 3. Hero Section Fixes */
   .hero {
-    margin-top: 60px !important;
-    flex-direction: column;
-    padding: 30px 15px !important;
+    padding-top: 80px !important; /* Space for navbar */
     text-align: center;
   }
 
-  .hero-content {
-    flex-direction: column;
+  .hero-left h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    word-break: keep-all; /* Prevent name breaking */
   }
 
-  .hero-left {
-    order: 2;
-    margin-top: 20px;
-  }
-
-  .hero-right {
-    order: 1;
+  .tagline {
+    font-size: 1.2rem;
+    margin: 10px auto;
   }
 
   .profile-circle {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
+    margin: 30px auto;
+    width: 200px;
+    height: 200px;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+  /* 4. Ensure All Content is Visible */
+  .about-section,
+  .projects-section,
+  .skills-section {
+    overflow: visible !important;
   }
 
-  /* 5. About Section */
-  .about-section {
-    padding: 40px 15px !important;
+  .project-card,
+  .skill-box {
+    transform: none !important; /* Remove any transforms cutting content */
   }
 
-  .soft-skills {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  /* 6. Projects Section */
+  /* 5. Adjust Grid Layouts */
   .projects-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 30px;
   }
 
-  .project-card {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .project-image {
-    height: 150px;
-    object-fit: contain;
-  }
-
-  /* 7. Skills Section */
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px;
   }
 
-  .skill-box {
-    height: 100px;
-    padding: 15px;
-  }
-
+  /* 6. Make All Images Fully Visible */
+  .project-image,
   .skill-box img {
-    width: 50px;
-    height: 50px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
   }
-
-  /* 8. General Improvements */
-  .section-title {
-    font-size: 2rem !important;
-    margin-bottom: 25px !important;
-    text-align: center;
-  }
-
-  /* 9. Hide unnecessary elements */
-  #tsparticles,
-  .custom-cursor {
-    display: none;
-  }
-
-  body {
-    cursor: default;
-  }
+}
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+section {
+  position: relative;
+  z-index: 1;
+  clear: both;
 }
