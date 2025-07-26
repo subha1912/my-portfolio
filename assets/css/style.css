@@ -602,6 +602,7 @@ section {
 }
 #skills {
   margin-bottom: 100px;
+  padding-bottom: 100px;
   position:relative;
   z-index:0; /* gives space after skills before contact starts */
 }
