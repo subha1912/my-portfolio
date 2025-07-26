@@ -821,3 +821,40 @@ body {
   position: relative;
   
 }
+/* Updated skills section */
+#skills {
+  padding: 100px 20px 80px; /* Increased top padding, reduced bottom padding */
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Updated contact section */
+#contact {
+  clear: both;
+  margin-top: 40px; /* Reduced from 80 */
+  padding: 80px 20px 40px; /* Adjusted padding */
+  background-color: var(--bg);
+  z-index: 2;
+  position: relative;
+}
+
+/* Adjusted contact form */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px; /* Reduced from 500px */
+  margin: 0 auto 30px;
+  gap: 15px;
+}
+
+/* Ensure social icons visibility */
+.social-icons {
+  margin-bottom: 30px; /* Reduced from 40px */
+}
+
+/* Ensure footer visibility */
+.footer {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
