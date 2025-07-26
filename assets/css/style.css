@@ -601,10 +601,10 @@ section {
   white-space: nowrap;
 }
 #skills {
-  padding-bottom: 200px;
+  padding-bottom: 120px;
   position:relative;
   overflow: visible;
-  z-index:1; /* gives space after skills before contact starts */
+  z-index:2; /* gives space after skills before contact starts */
 }
 
 
