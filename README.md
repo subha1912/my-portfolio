@@ -55,7 +55,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## ©️ **Copyright**
 © 2025 Subhalakshmi Alagappan
-All rights reserved. Built with passion for data, design, and development 💫
+All rights reserved. 
+Built with passion for data, design, and development 💫
 
 
 ##  **Contact**
