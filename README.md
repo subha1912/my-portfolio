@@ -96,9 +96,7 @@ npm run build
 
 Deployment
 You can deploy this app to:
-
 Vercel
-
 Netlify
 
 
