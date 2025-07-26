@@ -225,21 +225,24 @@ document.getElementById('themeToggle').addEventListener('click', function() {
 
 // Toggle mobile menu
 // Mobile menu toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const menuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-mobileMenuBtn.addEventListener('click', () => {
-  mobileMenuBtn.classList.toggle('active');
-  mobileMenuOverlay.classList.toggle('show');
-  document.body.classList.toggle('no-scroll');
+menuBtn.addEventListener('click', function() {
+  // Toggle menu open/close
+  this.classList.toggle('active');
+  mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  
+  // Toggle body scroll
+  document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
 });
 
 // Close menu when clicking links
-mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    mobileMenuBtn.classList.remove('active');
-    mobileMenuOverlay.classList.remove('show');
-    document.body.classList.remove('no-scroll');
+    menuBtn.classList.remove('active');
+    mobileMenu.style.display = 'none';
+    document.body.style.overflow = '';
   });
 });
 
