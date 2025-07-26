@@ -223,16 +223,24 @@ document.getElementById('themeToggle').addEventListener('click', function() {
   }
 });
 
-document.getElementById('themeToggle').addEventListener('click', function() {
-  const body = document.body;
-  
-  // Cycle through themes: Light → Dark → Red → Light...
-  if (!body.classList.contains('dark-theme') && !body.classList.contains('red-theme')) {
-    body.classList.add('dark-theme'); // Switch to Dark
-  } else if (body.classList.contains('dark-theme')) {
-    body.classList.remove('dark-theme');
-    body.classList.add('red-theme'); // Switch to Red
-  } else {
-    body.classList.remove('red-theme'); // Back to Light
-  }
+// Toggle mobile menu
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuOverlay.classList.toggle('show');
+  document.body.classList.toggle('menu-open');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('show');
+    document.body.classList.remove('menu-open');
+  });
+});
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+mobileThemeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  // Add your theme toggle logic here
 });
