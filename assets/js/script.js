@@ -168,8 +168,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Mobile Menu Toggle
 
-// Mobile Menu Toggle
+// Theme Toggle Fix
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  const isLight = savedTheme === 'light';
+  
+  if (isLight) {
+    document.body.classList.add('light-theme');
+    document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
+  }
+
+  // Theme toggle handler
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    const isLight = document.body.classList.toggle('light-theme');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    if (isLight) {
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+      themeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  // Mobile Menu Toggle
   const hamburger = document.getElementById('hamburger');
   const navRight = document.querySelector('.nav-right');
   
@@ -177,12 +200,10 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', function() {
       this.classList.toggle('active');
       navRight.classList.toggle('show');
-      
-      // Prevent scrolling when menu is open
       document.body.style.overflow = navRight.classList.contains('show') ? 'hidden' : '';
     });
     
-    // Close menu when clicking a link
+    // Close menu when clicking links
     document.querySelectorAll('.nav-right a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -191,15 +212,4 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  
-  // Theme Toggle (existing code remains same)
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  
-  themeToggle.addEventListener('click', function() {
-    const isLight = document.body.classList.toggle('light-theme');
-    themeIcon.classList.toggle('fa-sun');
-    themeIcon.classList.toggle('fa-moon');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
 });

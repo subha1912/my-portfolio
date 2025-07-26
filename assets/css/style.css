@@ -1076,7 +1076,7 @@ body {
   }
 }
 /* ===================================== */
-/* MOBILE NAVBAR (DILIP'S STYLE) */
+/* MOBILE NAVBAR FIXES (MAX-WIDTH: 768px) */
 /* ===================================== */
 @media only screen and (max-width: 768px) {
   /* 1. Navbar Container */
@@ -1094,22 +1094,17 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
 
-  /* 2. Name + Theme Toggle */
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
+  /* 2. Keep name visible */
   .mobile-name {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--text);
+    display: block !important;
   }
 
-  /* 3. Hamburger Menu (Dilip's Style) */
+  /* 3. Hamburger Menu */
   .hamburger {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
@@ -1128,12 +1123,12 @@ body {
     transition: all 0.3s ease;
   }
 
-  /* Varied line lengths like you wanted */
+  /* Varied line lengths */
   .hamburger span:nth-child(1) { width: 100%; }
   .hamburger span:nth-child(2) { width: 80%; align-self: flex-end; }
   .hamburger span:nth-child(3) { width: 60%; }
 
-  /* 4. Mobile Menu Overlay (Dilip's Style) */
+  /* 4. Mobile Menu Overlay */
   .nav-right {
     position: fixed;
     top: 0;
