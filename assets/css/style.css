@@ -602,7 +602,7 @@ section {
 }
 #skills {
   padding-bottom: 50px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   position:relative;
   overflow: visible;
   z-index:2; /* gives space after skills before contact starts */
@@ -808,4 +808,7 @@ body {
 .floating-stars.animate {
   opacity: 1;
   transform: translate(-50%, -180%);
+}
+#contact{
+  margin-top:80px;
 }
