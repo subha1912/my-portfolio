@@ -602,7 +602,7 @@ section {
 }
 #skills {
   padding-bottom: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   position:relative;
   overflow: visible;
   z-index:2; /* gives space after skills before contact starts */
@@ -810,15 +810,12 @@ body {
   transform: translate(-50%, -180%);
 }
 #contact{
-  #contact {
   clear: both;
   margin-top: 100px;
-  padding-top: 60px;
+  padding-top: 50px;
   background-color: #f7f7f7;
   z-index: 1;
   position: relative;
   overflow: hidden; /* or try auto */
   min-height: 100vh; /* <-- ADD THIS */
-}
-
 }
