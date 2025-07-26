@@ -223,3 +223,47 @@ document.addEventListener('DOMContentLoaded', function() {
   initCursor();
   initRatingStars();
 });
+
+//mobile devices//
+// ======================
+// MOBILE THEME TOGGLE ADDITION
+// ======================
+
+// 1. Add this function right before DOMContentLoaded
+function setupMobileTheme() {
+  // Default to dark theme on mobile if no preference exists
+  if (/Mobi|Android/i.test(navigator.userAgent) {
+    if (!localStorage.getItem('theme')) {
+      document.body.classList.remove('light-theme');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  
+  // Mark both theme icons
+  const themeIcon = document.getElementById('themeIcon');
+  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+  if (themeIcon) themeIcon.classList.add('theme-icon');
+  if (mobileThemeIcon) mobileThemeIcon.classList.add('theme-icon');
+  
+  // Mobile toggle click handler
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', function() {
+      // Reuse your existing theme toggle logic
+      const isLight = document.body.classList.toggle('light-theme');
+      
+      // Update both icons
+      document.querySelectorAll('.theme-icon').forEach(icon => {
+        icon.classList.toggle('fa-sun', isLight);
+        icon.classList.toggle('fa-moon', !isLight);
+      });
+      
+      // Keep your existing localStorage and particles code
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const existingParticles = tsParticles.domItem(0);
+      if (existingParticles) existingParticles.destroy();
+      loadParticles(isLight);
+      updateContactTitleColor(isLight ? 'light' : 'dark');
+    });
+  }
+}
