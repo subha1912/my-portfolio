@@ -228,3 +228,35 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("themeToggle")?.addEventListener('click', toggleTheme);
   document.getElementById("mobileThemeToggle")?.addEventListener('click', toggleTheme);
 });
+
+// Custom Cursor - Hide on Mobile
+function initCursor() {
+  const cursor = document.getElementById("customCursor");
+  if (!cursor) return;
+
+  // Check if mobile device
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    cursor.style.display = 'none';
+    document.body.style.cursor = 'auto';
+    return;
+  }
+
+  // Desktop cursor setup
+  cursor.style.display = 'flex';
+  document.body.style.cursor = 'none';
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.display = 'flex';
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
+  });
+}
