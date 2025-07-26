@@ -178,3 +178,23 @@ function initRatingStars() {
     });
   });
 }
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  
+  if (mobileMenuBtn && mobileMenuOverlay) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenuOverlay.classList.toggle('show');
+      document.body.style.overflow = mobileMenuOverlay.classList.contains('show') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking links
+    mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('show');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+});
