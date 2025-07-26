@@ -810,5 +810,15 @@ body {
   transform: translate(-50%, -180%);
 }
 #contact{
-  margin-top:80px;
+  #contact {
+  clear: both;
+  margin-top: 100px;
+  padding-top: 60px;
+  background-color: #f7f7f7;
+  z-index: 1;
+  position: relative;
+  overflow: hidden; /* or try auto */
+  min-height: 100vh; /* <-- ADD THIS */
+}
+
 }
