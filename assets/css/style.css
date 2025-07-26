@@ -1068,7 +1068,7 @@ body {
   /* 9. Hide unnecessary elements */
   #tsparticles,
   .custom-cursor {
-    display: none;
+    display: flex;
   }
   
   body {
@@ -1223,8 +1223,8 @@ body {
   border: none;
   color: white;
   font-size: 1.1rem;
-  padding: 12px 20px;
-  margin-top: 15px;
+  padding: 10px 15px;
+  margin-top: 10px;
   cursor: pointer;
 }
 

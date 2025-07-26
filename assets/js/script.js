@@ -39,29 +39,25 @@ function toggleTheme() {
   const isLight = document.body.classList.toggle("light-theme");
   
   // Update all theme icons
-  const themeIcons = [
-    document.getElementById("themeIcon"),
-    document.getElementById("mobileThemeIcon")
-  ];
-  
-  themeIcons.forEach(icon => {
-    if (icon) {
-      icon.classList.toggle("fa-sun", isLight);
-      icon.classList.toggle("fa-moon", !isLight);
-    }
+  document.querySelectorAll(".theme-icon").forEach(icon => {
+    icon.classList.toggle("fa-sun", isLight);
+    icon.classList.toggle("fa-moon", !isLight);
   });
 
   localStorage.setItem("theme", isLight ? "light" : "dark");
-  
+  updateThemeDependentElements(isLight);
+}
+
+function updateThemeDependentElements(isLight) {
   // Update particles
   const existingParticles = tsParticles.domItem(0);
   if (existingParticles) existingParticles.destroy();
   loadParticles(isLight);
   
+  // Update contact title
   updateContactTitleColor(isLight ? "light" : "dark");
 }
 
-// Contact Title Color
 function updateContactTitleColor(theme) {
   const title = document.querySelector(".contact-title");
   if (title) {
@@ -142,9 +138,21 @@ function initCursor() {
   const cursor = document.getElementById("customCursor");
   if (!cursor) return;
 
+  cursor.style.display = 'flex';
+
   document.addEventListener("mousemove", (e) => {
-    cursor.style.left = `${e.clientX - 20}px`;
-    cursor.style.top = `${e.clientY - 20}px`;
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+  
+  document.body.style.cursor = 'none';
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.display = 'flex';
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
   });
 }
 
@@ -196,74 +204,27 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add("light-theme");
   }
 
-  // Initialize theme icons
-  const themeIcons = [
-    document.getElementById("themeIcon"),
-    document.getElementById("mobileThemeIcon")
-  ];
-  
-  themeIcons.forEach(icon => {
-    if (icon) {
-      icon.classList.toggle('fa-sun', isLight);
-      icon.classList.toggle('fa-moon', !isLight);
-    }
-  });
+  // Mark theme icons
+  document.getElementById("themeIcon")?.classList.add("theme-icon");
+  document.getElementById("mobileThemeIcon")?.classList.add("theme-icon");
 
-  // Set up event listeners
-  document.getElementById("themeToggle")?.addEventListener('click', toggleTheme);
-  document.getElementById("mobileThemeToggle")?.addEventListener('click', toggleTheme);
+  // Set initial icon states
+  document.querySelectorAll(".theme-icon").forEach(icon => {
+    icon.classList.toggle("fa-sun", isLight);
+    icon.classList.toggle("fa-moon", !isLight);
+  });
 
   // Initialize components
   loadParticles(isLight);
-  updateContactTitleColor(isLight ? 'light' : 'dark');
+  updateContactTitleColor(isLight ? "light" : "dark");
   initMobileMenu();
   initSkillFilters();
   initContactForm();
   initSmoothScrolling();
   initCursor();
   initRatingStars();
+
+  // Set up event listeners
+  document.getElementById("themeToggle")?.addEventListener('click', toggleTheme);
+  document.getElementById("mobileThemeToggle")?.addEventListener('click', toggleTheme);
 });
-
-//mobile devices//
-// ======================
-// MOBILE THEME TOGGLE ADDITION
-// ======================
-
-// 1. Add this function right before DOMContentLoaded
-function setupMobileTheme() {
-  // Default to dark theme on mobile if no preference exists
-  if (/Mobi|Android/i.test(navigator.userAgent) {
-    if (!localStorage.getItem('theme')) {
-      document.body.classList.remove('light-theme');
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-  
-  // Mark both theme icons
-  const themeIcon = document.getElementById('themeIcon');
-  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
-  if (themeIcon) themeIcon.classList.add('theme-icon');
-  if (mobileThemeIcon) mobileThemeIcon.classList.add('theme-icon');
-  
-  // Mobile toggle click handler
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  if (mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', function() {
-      // Reuse your existing theme toggle logic
-      const isLight = document.body.classList.toggle('light-theme');
-      
-      // Update both icons
-      document.querySelectorAll('.theme-icon').forEach(icon => {
-        icon.classList.toggle('fa-sun', isLight);
-        icon.classList.toggle('fa-moon', !isLight);
-      });
-      
-      // Keep your existing localStorage and particles code
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      const existingParticles = tsParticles.domItem(0);
-      if (existingParticles) existingParticles.destroy();
-      loadParticles(isLight);
-      updateContactTitleColor(isLight ? 'light' : 'dark');
-    });
-  }
-}
