@@ -49,7 +49,17 @@ project-root/
 └── LICENSE # MIT License
 
 
----
+## 📝 **License**
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+## ©️ **Copyright**
+© 2025 Subhalakshmi Alagappan
+All rights reserved. Built with passion for data, design, and development 💫
+
+
+##  **Contact**
+📧 Email: subhalakshmialagappan19@gmail.com
 
 ## 🔄 Setup Instructions
 
@@ -91,26 +101,6 @@ Vercel
 
 Netlify
 
-## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-## ©️ Copyright
-© 2025 Subhalakshmi Alagappan
-All rights reserved. Built with passion for data, design, and development 💫
 
-## 🤝 Contribution
-Contributions are welcome! To contribute:
-
-Fork the repository
-
-Create your feature branch: git checkout -b feature-name
-
-Commit your changes: git commit -m "Add feature"
-
-Push to the branch: git push origin feature-name
-
-Submit a pull request
-
-##  Contact
-📧 Email: subhalakshmialagappan19@gmail.com
