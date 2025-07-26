@@ -213,4 +213,62 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+});// Mobile Menu Toggle - Guaranteed Working Version
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  const navRight = document.querySelector('.nav-right');
+  
+  // First make sure elements exist
+  if (!hamburger || !navRight) {
+    console.error("Menu elements not found!");
+    return;
+  }
+  
+  // Initialize menu state
+  hamburger.style.display = 'none';
+  navRight.style.display = 'none';
+  
+  function checkMobileMenu() {
+    if (window.innerWidth <= 768) {
+      hamburger.style.display = 'flex';
+      navRight.style.display = 'none'; // Start hidden
+    } else {
+      hamburger.style.display = 'none';
+      navRight.style.display = 'flex'; // Show normal nav
+    }
+  }
+  
+  // Initial check
+  checkMobileMenu();
+  
+  // Click handler with better error handling
+  hamburger.addEventListener('click', function() {
+    try {
+      this.classList.toggle('active');
+      const shouldShow = navRight.style.display === 'none';
+      navRight.style.display = shouldShow ? 'flex' : 'none';
+      
+      // Add debug borders temporarily
+      hamburger.classList.add('debug-nav');
+      navRight.classList.add('debug-nav');
+      setTimeout(() => {
+        hamburger.classList.remove('debug-nav');
+        navRight.classList.remove('debug-nav');
+      }, 2000);
+      
+    } catch (error) {
+      console.error("Menu toggle error:", error);
+    }
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', checkMobileMenu);
+  
+  // Close menu when clicking links
+  document.querySelectorAll('.nav-right a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navRight.style.display = 'none';
+    });
+  });
 });

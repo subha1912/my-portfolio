@@ -1075,3 +1075,32 @@ body {
     cursor: default;
   }
 }
+/* ===================================== */
+/* NAVBAR MENU VISIBILITY FIXES */
+/* ===================================== */
+
+/* 1. Ensure hamburger is visible on mobile */
+@media only screen and (max-width: 768px) {
+  .hamburger {
+    display: flex !important; /* Force show */
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1001;
+  }
+  
+  /* 2. Make sure menu has proper stacking context */
+  .nav-right {
+    z-index: 1000;
+    background: var(--bg);
+  }
+  
+  /* 3. Fix potential theme color issues */
+  .hamburger span {
+    background: var(--text) !important;
+  }
+}
+
+/* 4. Debugging borders (temporary - remove after fixing) */
+.debug-nav {
+  outline: 2px solid red !important;
+}
