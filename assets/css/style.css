@@ -1227,9 +1227,9 @@ body {
 
 /* Apply the color to dots */
 .mobile-menu-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+  width: 6px;
+  height: 7px;
+  border-radius: 80%;
   background: var(--dot-color); /* Dynamically changes with theme */
   transition: background 0.3s; /* Smooth theme switch */
 }
