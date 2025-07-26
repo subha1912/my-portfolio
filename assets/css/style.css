@@ -1191,17 +1191,6 @@ body {
   }
 }
 
-/* Mobile theme toggle button */
-#mobileThemeToggle {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
 /* Dark theme adjustment */
 .dark-theme #mobileThemeToggle,
 .red-theme #mobileThemeToggle {
@@ -1222,9 +1211,27 @@ body {
     font-size: 1.2rem;
     padding: 10px 20px;
     margin-top: 20px;
+    cursor:pointer;
   }
   
-  .light-theme #mobileThemeToggle {
-    color: black;
-  }
+}
+.mobile-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.light-theme .mobile-theme-btn {
+  color: black;
+}
+
+.mobile-theme-btn i {
+  font-size: 1.2rem;
 }
