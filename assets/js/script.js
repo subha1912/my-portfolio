@@ -166,3 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// Mobile Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navRight = document.querySelector('.nav-right');
+
+hamburger.addEventListener('click', () => {
+  navRight.classList.toggle('show');
+  hamburger.classList.toggle('active');
+});
