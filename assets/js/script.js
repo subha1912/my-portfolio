@@ -222,3 +222,17 @@ document.getElementById('themeToggle').addEventListener('click', function() {
     icon.classList.add('fa-moon');
   }
 });
+
+document.getElementById('themeToggle').addEventListener('click', function() {
+  const body = document.body;
+  
+  // Cycle through themes: Light → Dark → Red → Light...
+  if (!body.classList.contains('dark-theme') && !body.classList.contains('red-theme')) {
+    body.classList.add('dark-theme'); // Switch to Dark
+  } else if (body.classList.contains('dark-theme')) {
+    body.classList.remove('dark-theme');
+    body.classList.add('red-theme'); // Switch to Red
+  } else {
+    body.classList.remove('red-theme'); // Back to Light
+  }
+});

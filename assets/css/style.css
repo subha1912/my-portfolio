@@ -1212,3 +1212,24 @@ body {
 .mobile-menu-btn:hover .mobile-menu-dot:nth-child(3) {
   transform: translateY(2px);
 }
+.mobile-menu-dot {
+  background: currentColor; /* Inherits text color */
+}
+
+.dark-theme {
+  --dot-color: #FFFFFF; /* White for dark theme */
+}
+
+/* Red Theme (Red Background) */
+.red-theme {
+  --dot-color: #FFFFFF; /* White for red theme (or use #FFFF00 for yellow) */
+}
+
+/* Apply the color to dots */
+.mobile-menu-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dot-color); /* Dynamically changes with theme */
+  transition: background 0.3s; /* Smooth theme switch */
+}
