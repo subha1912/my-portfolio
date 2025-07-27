@@ -1,36 +1,51 @@
-// Particle Background Configuration
+// ===== UPDATED PARTICLE FUNCTION ===== //
 function loadParticles(isLightTheme) {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+  
   tsParticles.load("particles-bg", {
     background: {
       color: { value: "transparent" },
     },
     particles: {
-      number: { value: 90 },
+      number: { 
+        value: isMobile ? 30 : 90 // Fewer particles on mobile
+      },
       color: { value: "#ff0000" },
       links: {
-        enable: true,
+        enable: !isMobile, // Disabled on mobile
         color: "#ff0000",
         distance: 120,
-        opacity: isLightTheme ? 0.9 : 0.5,
+        opacity: isLightTheme ? 0.9 : 0.5
       },
-      move: { enable: true, speed: 1.2 },
-      size: { value: 2.5 },
+      move: { 
+        enable: true,
+        speed: isMobile ? 0.5 : 1.2 // Slower on mobile
+      },
+      size: { 
+        value: isMobile ? 1.5 : 2.5 // Smaller on mobile
+      },
       opacity: {
         value: isLightTheme ? 0.85 : 0.6,
-        anim: { enable: false },
-      },
+        anim: { enable: false }
+      }
     },
     interactivity: {
       events: {
-        onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: true, mode: "push" },
+        onhover: { 
+          enable: !isMobile, // Disabled on mobile
+          mode: "repulse" 
+        },
+        onclick: { 
+          enable: !isMobile, // Disabled on mobile
+          mode: "push" 
+        }
       },
       modes: {
         repulse: { distance: 100 },
-        push: { quantity: 4 },
-      },
+        push: { quantity: 4 }
+      }
     },
-    detectRetina: true,
+    detectRetina: true
   });
 }
 
