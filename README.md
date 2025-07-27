@@ -65,6 +65,12 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 To clone and run this project locally:
 
+## Link for direct portfolio
+
+Portfolio (Live Demo): subhalakshmi-portfolio.vercel.app
+code: https://github.com/subha1912/my-portfolio
+
+
 ```bash
 # Clone the repo
 git clone https://github.com/your-username/your-portfolio-repo.git
