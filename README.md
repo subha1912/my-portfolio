@@ -61,14 +61,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ##  **Contact**
 📧 Email: subhalakshmialagappan19@gmail.com
 
-## 🔄 Setup Instructions
-
-To clone and run this project locally:
-
 ## Link for direct portfolio
 
 Portfolio (Live Demo): subhalakshmi-portfolio.vercel.app
 code: https://github.com/subha1912/my-portfolio
+
+## 🔄 Setup Instructions
+
+To clone and run this project locally:
 
 
 ```bash
