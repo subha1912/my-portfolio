@@ -63,8 +63,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Link for direct portfolio
 
-Portfolio (Live Demo): subhalakshmi-portfolio.vercel.app
-code: https://github.com/subha1912/my-portfolio
+[![Portfolio (Live Demo)]: (https://vercel.com/subha1912s-projects/my-portfolio)]s://subhalakshmi-portfolio.vercel.app 
+
+**code** : https://github.com/subha1912/my-portfolio
 
 ## 🔄 Setup Instructions
 
